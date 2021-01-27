@@ -1,0 +1,46 @@
+Questions table
+
+1.Id
+2.Title
+3.Description
+4.CategoryId
+6.DateCreated
+7.UserId
+8.Upvotes
+10.IsResolved
+
+Activities Table
+
+1.Id
+2.UserId
+3.AnswerId
+4.DateCreated
+5.ActivityType (Likes or Dislikes or Upvotes or Views)
+6.QuestionId
+
+Answers Table
+
+1.Id
+2.Answer
+3.QuestionId
+4.UserId
+5.DateCreated
+6.IsBestAnswer
+
+Categories Table
+
+1.Id
+2.Name
+3.Description
+4.DateCreated
+
+Users Table
+
+1.Id
+2.FirstName
+3.LastName
+4.Designation
+5.DepartmentId
+6.ProfilePicUrl
+7.LocationId
+8.DateCreated

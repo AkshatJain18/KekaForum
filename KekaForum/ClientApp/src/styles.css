@@ -1,0 +1,126 @@
+* {
+  font-family: 'Open Sans', sans-serif;
+}
+
+html, body {
+  height: 100%;
+}
+
+.navbar {
+  list-style-type: none;
+}
+
+.side-nav-container {
+  background-color: #3E4249;
+}
+
+.side-nav-container .side-nav {
+  list-style-type: none;
+  padding: 0px;
+}
+
+.side-nav-container .side-nav .side-nav-item {
+  list-style: none;
+  padding: 10px;
+  color: #ededee;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  justify-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.w-10 {
+  width: 10%;
+}
+
+.active {
+  background-color: #505661;
+}
+
+.bg-purple {
+  background-color: #76618b;
+}
+
+.text-bluewhite {
+  color: #E9E6ED;
+}
+
+.text-x-small {
+  font-size: 12px;
+}
+
+.text-small {
+  font-size: 14px;
+}
+
+.text-medium {
+  font-size: 16px;
+}
+
+.text-large {
+  font-size: 18px;
+}
+
+.text-lighter {
+  font-weight: lighter;
+}
+
+.font-400 {
+  font-weight: 400;
+}
+
+.navbar-container {
+  background-color: #FFFFFF;
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.navbar-container .navbar {
+  width: 25%;
+  list-style-type: none;
+  padding: 0px;
+}
+
+.navbar-container .navbar .nav-item {
+  color: #B2B2B2;
+  font-size: 14px;
+  display: inline-block;
+  cursor: pointer;
+  height: 100%;
+  text-transform: uppercase;
+}
+
+.navbar-container .navbar .nav-item-active {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  height: 5vw;
+  width: 5vw;
+  border-style: solid;
+  border-color: #000;
+  border-width: 0px 1px 1px 0px;
+  -webkit-transform: rotate(45deg);
+          transform: rotate(45deg);
+  -webkit-transition: border-width 150ms ease-in-out;
+  transition: border-width 150ms ease-in-out;
+}
+
+.w-95 {
+  width: 95%;
+}
+
+.w-30 {
+  width: 30%;
+}
+/*# sourceMappingURL=styles.css.map */
