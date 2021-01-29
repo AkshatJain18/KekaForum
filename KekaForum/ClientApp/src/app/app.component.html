@@ -1,10 +1,10 @@
 <body>
   <div class="d-flex h-100">
-    <div>
+    <div *ngIf="this.navbarService.isSideNavVisible">
       <app-side-nav-menu></app-side-nav-menu>
     </div>
     <div class="d-flex flex-column w-100 h-100">
-      <div>
+      <div *ngIf="this.navbarService.isTopNavVisible">
         <app-nav-menu></app-nav-menu>
       </div>
       <div class="w-100 h-100">

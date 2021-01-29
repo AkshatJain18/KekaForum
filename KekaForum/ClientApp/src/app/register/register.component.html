@@ -1,0 +1,55 @@
+<div class="row h-100">
+  <div class="col-7">
+      <img src="../../assets/images/login-page-img.jpg" class="w-100 h-100" style="background-size: cover;">
+  </div>
+  <div class="col-5 bg-light d-flex align-items-center flex-column">
+      <div class="h-50 w-65 mt-auto mb-auto mr-5 pr-5">
+          <label class="text-uppercase text-primary text-large">register</label>
+          <form [formGroup]="registerForm" class="mt-2">
+            <div class="form-group">
+              <input placeholder="First Name" class="form-control text-medium" formControlName="firstName">
+              <label class="text-danger text-small ml-2" *ngIf="registerForm.get('firstName')!.hasError('required') && isSubmitted">First Name is Required</label>
+            </div>
+            <div class="form-group">
+              <input placeholder="Last Name" class="form-control text-medium" formControlName="lastName">
+              <label class="text-danger text-small ml-2" *ngIf="registerForm.get('lastName')!.hasError('required') && isSubmitted">Last Name is Required</label>
+            </div>
+            <div class="form-group">
+              <input placeholder="Phone Number" class="form-control text-medium" formControlName="phoneNumber">
+              <label class="text-danger text-small ml-2" *ngIf="registerForm.get('phoneNumber')!.hasError('required') && isSubmitted">Phone No is Required</label>
+              <label class="text-danger text-small ml-2" *ngIf="registerForm.get('phoneNumber')!.value && registerForm.get('phoneNumber')!.invalid && isSubmitted">Phone No is Invalid</label>
+            </div>
+            <div class="form-group">
+              <input placeholder="Email" class="form-control text-medium" formControlName="email">
+              <label class="text-danger text-small ml-2" *ngIf="registerForm.get('email')!.hasError('required') && isSubmitted">Email is Required</label>
+              <label class="text-danger text-small ml-2" *ngIf="registerForm.get('email')!.value && registerForm.get('email')!.invalid && isSubmitted">Email is Invalid</label>
+            </div>
+            <div class="form-group">
+              <input placeholder="Password" type="password" class="form-control text-medium" formControlName="password">
+              <label class="text-danger text-small ml-2" *ngIf="registerForm.get('password')!.hasError('required') && isSubmitted">Password is Required</label>
+              <label class="text-danger text-small ml-2" *ngIf="registerForm.get('password')!.value && registerForm.get('password')!.invalid && isSubmitted">Password is Invalid</label>
+            </div>
+            <div class="form-group">
+              <input placeholder="Designation" class="form-control text-medium" formControlName="designation">
+              <label class="text-danger text-small ml-2" *ngIf="registerForm.get('designation')!.hasError('required') && isSubmitted">Designation is Required</label>
+              <label class="text-danger text-small ml-2" *ngIf="registerForm.get('designation')!.value && registerForm.get('designation')!.invalid && isSubmitted">Designation is Invalid</label>
+            </div>
+            <div class="form-group">
+              <select placeholder="Department" class="form-control text-medium" formControlName="department">
+
+              </select>
+              <label class="text-danger text-small ml-2" *ngIf="registerForm.get('department')!.hasError('required') && isSubmitted">Department is Required</label>
+              <label class="text-danger text-small ml-2" *ngIf="registerForm.get('department')!.value && registerForm.get('department')!.invalid && isSubmitted">Department is Invalid</label>
+            </div>
+            <div class="form-group">
+              <select placeholder="Location" class="form-control text-medium" formControlName="location">
+
+              </select>
+              <label class="text-danger text-small ml-2" *ngIf="registerForm.get('location')!.hasError('location') && isSubmitted">Location is Required</label>
+              <label class="text-danger text-small ml-2" *ngIf="registerForm.get('location')!.value && registerForm.get('location')!.invalid && isSubmitted">Location is Invalid</label>
+            </div>
+            <button type="button" class="btn btn-primary form-control text-medium text-uppercase" (click)="register()">register</button>
+          </form>
+      </div>
+  </div>
+</div>
