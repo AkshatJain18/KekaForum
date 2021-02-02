@@ -4,6 +4,7 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 
 import { AuthService } from 'src/services/auth.service';
+import { User } from 'src/models/User';
 
 @Component({
   selector: 'app-login',
@@ -29,11 +30,15 @@ export class LoginComponent implements OnInit {
 
   login(){
     this.isSubmitted=true;
+    console.log(this.loginForm.value);
     if(this.loginForm.valid){
       this.authService.login(this.loginForm.value).subscribe(user=>
       {
         if(user.id!=null){
-          localStorage.setItem('user',JSON.stringify(user));
+          const userData:User=user;
+          localStorage.setItem('accessToken',user.accessToken);
+          localStorage.setItem('user',JSON.stringify(userData));
+          console.log(user);
           this.router.navigateByUrl('/homepage');
         }else{  
           alert("invalid credentials");

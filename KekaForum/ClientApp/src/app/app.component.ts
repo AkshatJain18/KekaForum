@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ChangeDetectorRef } from '@angular/core';
 import { NavbarService } from 'src/services/navbar.service';
 
 @Component({
@@ -7,11 +7,9 @@ import { NavbarService } from 'src/services/navbar.service';
 })
 export class AppComponent {
 
-  isTopNavVisible:boolean;
-  isSideNavVisible:boolean;
   navbarService:NavbarService;
 
-  constructor(navbarService:NavbarService){
+  constructor(navbarService:NavbarService,private changeDetector:ChangeDetectorRef ){
     this.navbarService=navbarService;
     console.log(this.navbarService);
   }
@@ -19,4 +17,6 @@ export class AppComponent {
   ngOnInit(){
 
   }
+
+  ngAfterViewChecked(){ this.changeDetector.detectChanges(); }
 }

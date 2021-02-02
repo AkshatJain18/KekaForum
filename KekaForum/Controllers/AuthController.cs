@@ -22,9 +22,9 @@ namespace KekaForum.Controllers
         }
 
         // GET api/auth/login
-        [HttpGet]
+        [HttpPost]
         [Route("login")]
-        public async Task<IActionResult> Get(Login login)
+        public async Task<IActionResult> Login([FromBody] Login login)
         {
             var result = await this.AuthService.Login(login);
             if (result != null)
@@ -37,7 +37,7 @@ namespace KekaForum.Controllers
         // POST api/auth/register
         [HttpPost]
         [Route("register")]
-        public async Task<IActionResult> Post([FromBody] Register register)
+        public async Task<IActionResult> Register([FromBody] Register register)
         {
             var result=await this.AuthService.Register(register);
             if (result!=null)

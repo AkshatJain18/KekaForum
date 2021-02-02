@@ -38,7 +38,8 @@ export class RegisterComponent implements OnInit {
       this.authService.register(this.registerForm.value).subscribe(user=>
       {
         if(user.id!=null){
-          localStorage.setItem('user',JSON.stringify(user))
+          localStorage.setItem('accessToken',user.accessToken);
+          localStorage.setItem('user',JSON.stringify(user));
           this.router.navigateByUrl('/homepage');
         }else{  
           alert('invalid credentials');

@@ -24,6 +24,7 @@ namespace KekaForum.Services.Services
         private readonly IDepartmentService DepartmentService;
         private readonly IMapper Mapper;
         private readonly ILocationService LocationService;
+
         public AuthService(UserManager<Models.Data.User> userManager,SignInManager<Models.Data.User> signInManager, RoleManager<IdentityRole> roleManager, IDepartmentService departmentService,ILocationService locationService,IMapper mapper)
         {
             this.UserManager = userManager;

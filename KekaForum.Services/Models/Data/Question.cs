@@ -20,6 +20,18 @@ namespace KekaForum.Services.Models.Data
         [Required]
         public int UserId { get; set; }
         [Required]
-        public Boolean IsResolved { get; set; }
+        public string UserFirstName { get; set; }
+        [Required]
+        public string UserLastName { get; set; }
+        [Required]
+        public string UserProfilePicUrl { get; set; }
+        [Required]
+        public int UpvotesCount { get; set; }
+        [Required]
+        public int ViewsCount { get; set; }
+        [Required]
+        public int AnswersCount { get; set; }
+        [Required]
+        public int IsResolved { get; set; }
     }
 }

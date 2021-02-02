@@ -24,9 +24,12 @@ namespace KekaForum.Services.Services
 
         public async Task<IEnumerable<KekaForum.Models.Core.Category>> GetAllCategories()
         {
-            string query = "";
+            string query = "select[Categories].Name,[Categories].Description,count(case when[Questions].CategoryId =[Categories].Id then 1 end) as 'TotalQuestions'," +
+                "count(case when[Questions].CategoryId =[Categories].Id and[Questions].DateCreated >= DATEADD(DAY, -5, GETDATE()) then 1 end) as 'WeeklyTagCount'," +
+                "count(case when[Questions].CategoryId =[Categories].Id and[Questions].DateCreated >= DATEADD(MONTH, -1, GETDATE()) then 1 end) as 'MonthlyTagCount' " +
+                "from [Categories] left outer join [Questions] on [Categories].Id =[Questions].Id group by [Categories].Name,[Categories].Description";
 
-            var result = await this.SqlConnection.QueryAsync(query);
+            var result = await this.SqlConnection.QueryAsync<Models.Data.Category>(query);
 
             return this.Mapper.Map<IEnumerable<KekaForum.Models.Core.Category>>(result);
         }

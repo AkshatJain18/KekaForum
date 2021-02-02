@@ -150,6 +150,14 @@ html, body {
   width: 65%;
 }
 
+.w-90 {
+  width: 90%;
+}
+
+.w-85 {
+  width: 85%;
+}
+
 .list-style-none {
   list-style-type: none;
   padding: 0px;
@@ -161,6 +169,10 @@ html, body {
 
 .text-xx-small {
   font-size: 10px;
+}
+
+.text-softpurple {
+  color: #76618B;
 }
 
 .rectangle {
@@ -177,5 +189,33 @@ html, body {
   width: 74px;
   border-radius: 3px;
   background-color: #76618B;
+}
+
+.search-div {
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+.pager-item {
+  padding-left: 30px;
+  padding-top: 12px;
+  padding-right: 23px;
+  padding-bottom: 12px;
+}
+
+.columns-3 {
+  -webkit-columns: 3;
+          columns: 3;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 1fr 1fr 1fr;
+      grid-template-columns: 1fr 1fr 1fr;
+  grid-gap: 20px;
+}
+
+.cursor-pointer {
+  cursor: pointer;
 }
 /*# sourceMappingURL=styles.css.map */

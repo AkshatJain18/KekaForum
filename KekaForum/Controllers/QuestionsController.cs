@@ -1,6 +1,7 @@
 ﻿using KekaForum.Models.Core;
 using KekaForum.Services.Interfaces;
 using KekaForum.Services.Services;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -13,6 +14,7 @@ namespace KekaForum.Controllers
 {
     [Route("api/questions")]
     [ApiController]
+    [AllowAnonymous]
     public class QuestionsController : ControllerBase
     {
         IQuestionService QuestionService;
@@ -23,7 +25,8 @@ namespace KekaForum.Controllers
 
         // POST api/questions
         [HttpGet]
-        public async Task<IActionResult> GetAllQuestions(Login login)
+        [AllowAnonymous]
+        public async Task<IActionResult> GetAllQuestions()
         {
             var result = await this.QuestionService.GetAllQuestions();
             if (result != null)
@@ -35,6 +38,7 @@ namespace KekaForum.Controllers
 
         // POST api/questions/3
         [HttpGet("{id}")]
+        [AllowAnonymous]
         public async Task<IActionResult> GetQuestionById(int id)
         {
             var result = await this.QuestionService.GetQuestionById(id);

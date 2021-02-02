@@ -1,0 +1,71 @@
+<div *ngIf="true">
+  <div class="bg-hintofred w-100 p-4">
+      <div class="d-flex align-items-center justify-content-between">
+          <div>
+              <img src="../../assets/images/sample-profile-pic.jpg" class="rounded-circle"  height="24px" width="24px">
+              <span class="text-small ml-3">{{question.userFirstName}}</span>
+              <span class="text-grey text-x-small ml-3">{{question.dateCreated | timeAgo}}</span>
+          </div>
+          <div class="d-flex align-items-center">
+              <img src="../../assets/images/report-icon.PNG" height="24px" width="24px">
+              <span class="text-purple text-x-small ml-3">Report this</span>
+          </div>
+      </div>
+      <div>
+          <p class="text-small text-dark mt-3 mb-0">
+              {{question.title}}
+          </p>
+          <p class="text-x-small text-grey mt-2">
+              {{question.description}}
+          </p>
+      </div>
+  </div>
+  <div class="bg-soltitude border-top border-bottom p-2">
+      <span class="text-small ml-3 text-black" *ngIf="answers">Answers ({{answers.length}})</span>
+  </div>
+  <div>
+      <div class="p-4">
+          <ul *ngFor="let answer of answers" class="list-style-none">
+            <li>
+              <div class="d-flex align-items-center justify-content-between">
+                  <div>
+                      <img src="../../assets/images/sample-profile-pic.jpg" class="rounded-circle"  height="20px" width="20px">
+                      <span class="text-small ml-3">{{answer.userFirstName+" "+answer.userLastName}}</span>
+                      <span class="text-grey text-x-small ml-3">{{answer.dateCreated | timeAgo}}</span>
+                  </div>
+                  <div class="d-flex">
+                      <div class="d-flex align-items-center">
+                          <img src="../../assets/images/likes-nonzero-icon.PNG" class="cursor-pointer" *ngIf="answer.likesCount" height="20px" width="20px">
+                          <img src="../../assets/images/likes-zero-icon.PNG" class="cursor-pointer" *ngIf="!answer.likesCount" height="20px" width="20px">
+                          <span class="text-black text-x-small ml-2">{{answer.likesCount}}</span>
+                      </div>
+                      <div class="d-flex align-items-center ml-5">
+                          <img src="../../assets/images/dislikes-nonzero-icon.PNG" class="cursor-pointer" *ngIf="answer.dislikesCount" height="17px" width="18px">
+                          <img src="../../assets/images/dislikes-zero-icon.PNG" class="cursor-pointer" *ngIf="!answer.dislikesCount" height="17px" width="18px">
+                          <span class="text-black text-x-small ml-2">{{answer.dislikesCount}}</span>
+                      </div>
+                  </div>
+              </div>
+              <div class="d-flex flex-column pl-5 mt-2">
+                  <span class="text-x-small">
+                    {{answer.answer}}
+                  </span>
+                  <div class="d-flex align-items-center mt-3">
+                      <input type="checkbox" class="mt-auto mb-auto">
+                      <span class="text-black text-x-small ml-2">Mark as best solution</span>
+                  </div>
+              </div>
+            </li>
+          </ul>
+      </div>
+  </div>
+</div>
+
+<div class="col-5 h-100 d-flex flex-column align-items-center justify-content-center" *ngIf="false">
+  <div class="w-50 d-flex flex-column align-items-center">
+    <img src="../../assets/images/back (2).svg" height="24px" width="24px">
+    <span class="text-grey text-center text-large mt-1">
+      Click on a Question to see all the details
+    </span>
+  </div>
+</div>

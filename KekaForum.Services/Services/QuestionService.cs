@@ -25,26 +25,26 @@ namespace KekaForum.Services.Services
         public async Task<IEnumerable<KekaForum.Models.Core.Question>> GetAllQuestions()
         {
             string query = "select [Questions].Id,[Questions].Title,[Questions].Description," +
-                "[AspNetUsers].FirstName,[AspNetUsers].ProfilePicUrl," +
+                "[AspNetUsers].FirstName as 'UserFirstName',[AspNetUsers].LastName as 'UserLastName',[AspNetUsers].ProfilePicUrl as 'UserProfilePicUrl'," +
                 "count(case when [Activities].ActivityType = @upvote then 1 end) as 'UpvotesCount'," +
                 "count(case when [Activities].ActivityType = @view then 1 end) as 'ViewsCount'," +
-                "count([Answers].Id) as 'AnswersCount',[Questions].IsResolved" +
+                "count(case when [Answers].QuestionId = [Questions].Id then 1 end) as 'AnswersCount',[Questions].IsResolved " +
                 "from [Questions] inner join [AspNetUsers] on [Questions].UserId =  [AspNetUsers].Id " +
-                "left outer join [Answers] on [Questions].Id =[Answers].QuestionId " +
-                "left outer join [Activities] on [Questions].Id = [Activities].QuestionId " +
+                "left outer join [Answers] on [Questions].Id = [Answers].QuestionId " +
+                "left outer join [Activities] on [Questions].Id = [Activities].QuestionId "+ 
                 "group by [Questions].Id,[Questions].Title,[Questions].Description," +
-                "[AspNetUsers].ProfilePicUrl,[AspNetUsers].FirstName";
+                "[AspNetUsers].ProfilePicUrl,[AspNetUsers].FirstName,[Questions].IsResolved,[AspNetUsers].LastName";
 
-            var result = await this.SqlConnection.QueryAsync(query,
+            var result = await this.SqlConnection.QueryAsync<Models.Data.Question>(query,
                 new { upvote = (int)ActivityType.Upvote, view = (int)ActivityType.View });
 
             return this.Mapper.Map<IEnumerable<KekaForum.Models.Core.Question>>(result);
         }
-
+         
         public async Task<KekaForum.Models.Core.Question> GetQuestionById(int id)
         {
             string query = "select [Questions].Id,[Questions].Title,[Questions].Description," +
-                "[AspNetUsers].FirstName,[AspNetUsers].ProfilePicUrl," +
+                "[AspNetUsers].FirstName as 'UserFirstName',[AspNetUsers].LastName as 'UserLastName',[AspNetUsers].ProfilePicUrl as 'UserProfilePicUrl'," +
                 "count(case when [Activities].ActivityType = @upvote then 1 end) as 'UpvotesCount'," +
                 "count(case when [Activities].ActivityType = @view then 1 end) as 'ViewsCount'," +
                 "count([Answers].Id) as 'AnswersCount',[Questions].IsResolved" +
@@ -53,7 +53,7 @@ namespace KekaForum.Services.Services
                 "left outer join [Answers] on [Questions].Id =[Answers].QuestionId " +
                 "left outer join [Activities] on [Questions].Id = [Activities].QuestionId " +
                 "group by [Questions].Id,[Questions].Title,[Questions].Description," +
-                "[AspNetUsers].ProfilePicUrl,[AspNetUsers].FirstName";
+                "[AspNetUsers].ProfilePicUrl,[AspNetUsers].FirstName,[AspNetUsers].LastName";
             
             var result= await this.SqlConnection.QueryAsync<KekaForum.Models.Core.Question>(query, 
                 new { id = id, upvote = (int)ActivityType.Upvote, view = (int)ActivityType.View });
@@ -64,7 +64,7 @@ namespace KekaForum.Services.Services
         public async Task<IEnumerable<KekaForum.Models.Core.Question>> GetQuestionByUserId(int userId)
         {
             string query = "select [Questions].Id,[Questions].Title,[Questions].Description," +
-                "[AspNetUsers].FirstName as 'UserFirstName',[AspNetUsers].ProfilePicUrl as 'UserProfilePicUrl'," +
+                "[AspNetUsers].FirstName as 'UserFirstName',[AspNetUsers].LastName as 'UserLastName',[AspNetUsers].ProfilePicUrl as 'UserProfilePicUrl'," +
                 "count(case when [Activities].ActivityType = @upvote then 1 end) as 'UpvotesCount'," +
                 "count(case when [Activities].ActivityType = @view then 1 end) as 'ViewsCount'," +
                 "count([Answers].Id) as 'AnswersCount',[Questions].IsResolved" +
@@ -72,7 +72,7 @@ namespace KekaForum.Services.Services
                 "left outer join [Answers] on [Questions].Id =[Answers].QuestionId " +
                 "left outer join [Activities] on [Questions].Id = [Activities].QuestionId " +
                 "group by [Questions].Id,[Questions].Title,[Questions].Description," +
-                "[AspNetUsers].ProfilePicUrl,[AspNetUsers].FirstName";
+                "[AspNetUsers].ProfilePicUrl,[AspNetUsers].FirstName,[AspNetUsers].LastName";
 
             var result = await this.SqlConnection.QueryAsync<KekaForum.Models.Core.Question>(query, 
                 new { userId = userId, upvote = (int)ActivityType.Upvote, view = (int)ActivityType.View });

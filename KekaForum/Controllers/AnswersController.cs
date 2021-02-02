@@ -1,6 +1,7 @@
 ﻿using KekaForum.Services.Interfaces;
 using KekaForum.Services.Models.Data;
 using KekaForum.Services.Services;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -22,6 +23,7 @@ namespace KekaForum.Controllers
 
         // GET api/questions/5/answers
         [Route("api/questions/{questionId}/answers")]
+        [AllowAnonymous]
         public async Task<IActionResult> GetAnswersByQuestionId(int questionId)
         {
             var result= await this.AnswerService.GetAnswersByQuestionId(questionId);

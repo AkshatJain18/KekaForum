@@ -13,7 +13,14 @@ namespace KekaForum
         public AutoMapperProfile()
         {
             CreateMap<Models.Core.User, Services.Models.Data.User>().ReverseMap();
-            CreateMap<Models.Core.Question, Services.Models.Data.Question>().ReverseMap();
+
+            CreateMap<Services.Models.Data.Question,Models.Core.Question>()
+                .ForMember(coreModel=>coreModel.IsResolved,
+                   m=>m.MapFrom(dataModel=>dataModel.IsResolved==1 ? true:false));
+
+            CreateMap<Services.Models.Data.AnswerModel, Models.Core.AnswerModel>()
+                .ForMember(coreModel => coreModel.IsBestAnswer,
+                    m => m.MapFrom(dataModel => dataModel.IsBestAnswer == 1 ? true : false));
         }
     }
 }
